@@ -1,0 +1,17 @@
+Dimension	SubDimension	Indicator_short	Indicator_Long	Indicator	Indicator_code	Source
+Urgency	Population ageing	Child marriage	Child marriage	Child marriage	1_1_1	UN world population prospects
+Urgency	Population ageing	Household responsibilities	Household responsibilities	Household responsibilities	1_1_2	UN world population prospects
+Urgency	Automation and structural change	Divorce	Divorce	Divorce	1_2_1	PIAAC / OECD 2018
+Urgency	Automation and structural change	Inheritance	Inheritance	Inheritance	1_2_2	OECD national accounts database
+Participation	Employers	Violence against women	Violence against women	Violence against women	3_1_1	CVTS/ENCLA/ Business Operations Survey/ Basic Survey of Human Resource Development
+Participation	Employers	Female genital mutilation	Female genital mutilation	Female genital mutilation	3_1_2	CVTS/ Business Operations Survey
+Participation	Employers	Missing women	Missing women	Missing women	3_1_3	CVTS/ Business Operations Survey
+Participation	Individuals	Reproductive autonomy	Reproductive autonomy	Reproductive autonomy	3_2_1	PIAAC
+Inclusiveness	Socio-demographic characteristics	Secure access to land assets	Secure access to land assets	Secure access to land assets	4_1_1	PIAAC
+Inclusiveness	Socio-demographic characteristics	Access to non-land assets	Access to non-land assets	Access to non-land assets	4_1_2	PIAAC
+Inclusiveness	Socio-demographic characteristics	Secure access to formal financial services	Secure access to formal financial services	Secure access to formal financial services	4_1_3	PIAAC
+Inclusiveness	Socio-demographic characteristics	Workplace rights	Workplace rights	Workplace rights	4_1_4	PIAAC
+Flexiguidance	Flexibility of training provision	Citizenship rights	Citizenship rights	Citizenship rights	7_1_1	PIAAC
+Flexiguidance	Flexibility of training provision	Political voice	Political voice	Political voice	7_1_2	PIAAC
+Flexiguidance	Use of career guidance services	Freedom of movement	Freedom of movement	Freedom of movement	7_2_1	AES
+Flexiguidance	Use of career guidance services	Access to justice	Access to justice	Access to justice	7_2_2	AES

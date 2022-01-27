@@ -1,0 +1,343 @@
+<!doctype html>
+<html>
+	<head>
+		<!--The browser can use non-English-language characters (...kind of) -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="libs/d3.v4.min.js"></script>
+		<script src="libs/d3.v4.jetpack.min.js"></script>
+		<script src="libs/d3-scale-chromatic.v1.min.js"></script>
+    <script src="libs/d3-queue.v3.min.js"></script>
+    <script src="libs/modernizr.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css" rel="stylesheet">  
+		<meta charset="utf-8">
+		<style></style>
+	</head>
+	<body>
+    <!-- Tab links -->
+    <div class="tab">
+      <button class="tablinks" id="countryStatsView" onclick="openTabs(event, 'countryView')">Country results</button>
+      <!--<button class="tablinks" id="dimensionsView" onclick="openTabs(event, 'dimensionView')">Dimensions</button>
+      <button class="tablinks" id="defaultOpen" onclick="openTabs(event, 'dashboardView')">Dashboard</button>-->
+    </div>
+    <br />
+    <div id="countryView" class="tabcontent">
+      <div id="Country_sel">
+        <div id="selCountry">
+          <div class="dropdown_text">Select a country: </div>
+          <select id="country_dropdown" onchange="loopOverIndicators(alignment,financing,flexiguidance,inclusiveness,participation,quality,urgency)">
+            <option value="-"> - </option>
+            <option value="Australia" selected="selected">Australia</option>
+            <option value="Austria" >Austria</option>
+            <option value="Belgium" >Belgium</option>
+            <option value="Canada" >Canada</option>
+            <option value="Chile" >Chile</option>
+            <option value="Czech Republic" >Czech Republic</option>
+            <option value="Denmark" >Denmark</option>
+            <option value="Estonia" >Estonia</option>
+            <option value="Finland" >Finland</option>
+            <option value="France" >France</option>
+            <option value="Germany" >Germany</option>
+            <option value="Greece" >Greece</option>
+            <option value="Hungary" >Hungary</option>
+            <option value="Ireland" >Ireland</option>
+            <option value="Israel" >Israel</option>
+            <option value="Italy" >Italy</option>
+            <option value="Japan" >Japan</option>
+            <option value="Korea" >Korea</option>
+            <option value="Latvia" >Latvia</option>
+            <option value="Lithuania" >Lithuania</option>
+            <option value="Luxembourg" >Luxembourg</option>
+            <option value="Netherlands" >Netherlands</option>
+            <option value="New Zealand" >New Zealand</option>
+            <option value="Norway" >Norway</option>
+            <option value="OECD">OECD</option>
+            <option value="Poland" >Poland</option>
+            <option value="Portugal" >Portugal</option>
+            <option value="Slovak Republic" >Slovak Republic</option>
+            <option value="Slovenia" >Slovenia</option>
+            <option value="Spain" >Spain</option>
+            <option value="Sweden" >Sweden</option>
+            <option value="Switzerland" >Switzerland</option>
+            <option value="Turkey" >Turkey</option>
+            <option value="United Kingdom" >United Kingdom</option>
+            <option value="United States" >United States</option>
+          <!--</optgroup>-->
+          </select>
+        </div>
+
+        <div id="compCountry">
+          <div class="dropdown_text_comp">Compare its performance to this country: </div>
+          <select id="country_dropdown_comp" onchange="loopOverIndicators(alignment,financing,flexiguidance,inclusiveness,participation,quality,urgency)">
+            <option value="-" selected="selected"> - </option>
+            <option value="Australia" >Australia</option>
+            <option value="Austria">Austria</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Canada">Canada</option>
+            <option value="Chile">Chile</option>
+            <option value="Czech Republic">Czech Republic</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Estonia">Estonia</option>
+            <option value="Finland">Finland</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Greece">Greece</option>
+            <option value="Hungary">Hungary</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Israel">Israel</option>
+            <option value="Italy">Italy</option>
+            <option value="Japan">Japan</option>
+            <option value="Korea">Korea</option>
+            <option value="Latvia">Latvia</option>
+            <option value="Lithuania">Lithuania</option>
+            <option value="Luxembourg">Luxembourg</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="New Zealand" >New Zealand</option>
+            <option value=" Norway">Norway</option>
+            <option value="OECD">OECD</option>
+            <option value="Poland">Poland</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Slovak Republic">Slovak Republic</option>
+            <option value="Slovenia">Slovenia</option>
+            <option value="Spain">Spain</option>
+            <option value="Sweden">Sweden</option>
+            <option value="Switzerland">Switzerland</option>
+            <option value="Turkey">Turkey</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <!--</optgroup>-->
+          </select>
+        </div>
+      </div>
+    
+      <!--
+        *******************************************************
+        ************Indicators' List*********************
+        *******************************************************
+      -->
+    		
+      <!--*******************************************    
+        ************ Challenges *********************
+        *********************************************
+      -->
+      <div id="Challenges">
+        <!------------->
+        <!-- Urgency -->
+        <!------------->
+        <div data-lorem="p">
+          <div class="text-toogle" aria-expanded="false" data-toggle="collapse"  href="#collapseUrgency"><span class="collapseSymbol text-collapsed">+</span><span class="collapseSymbol text-expanded">-</span><span class="dimTitle" id="UrgencyTitle" >Discrimination in the family <img src="img/urgency.svg" class="img"></span><br/><span class="dimDef">Social institutions that limit women’s decision-making power and undervalues their status in the household and the family</span></div>
+          <div class="introChart">
+            <div id="title_Urgency" class="indicTitle">
+            </div>
+            <div id="chart_Urgency" class="indicChart">
+            </div>
+          </div>
+          <div id="collapseUrgency" class="panel-collapse collapse">
+            <div class="indicatorPres">
+              <div id="title_1_1_1" class="indicTitle">
+              </div>
+              <div id="chart_1_1_1" class="indicChart">
+              </div>
+            </div>
+            <div class="indicatorPres">
+              <div id="title_1_1_2" class="indicTitle">
+              </div>
+              <div id="chart_1_1_2" class="indicChart">
+              </div>
+            </div>
+            <div class="indicatorPres">
+              <div id="title_1_2_1" class="indicTitle">
+              </div>
+              <div id="chart_1_2_1" class="indicChart">
+              </div>
+            </div>
+            <div class="indicatorPres">
+              <div id="title_1_2_2" class="indicTitle">
+              </div>
+              <div id="chart_1_2_2" class="indicChart">
+              </div>
+            </div>
+          </div>
+          <div class="sticky_sentinel sticky_sentinel--top"></div>
+          <div class="sticky_sentinel sticky_sentinel--bottom"></div>
+        </div>
+        <!------------------->
+        <!-- Coverage -->
+        <!------------------->
+        <div data-lorem="p">
+          <div class="text-toogle" aria-expanded="false" data-toggle="collapse"  href="#collapseCoverage"><span class="collapseSymbol text-collapsed">+</span><span class="collapseSymbol text-expanded">-</span><span class="dimTitle" id="CoverageTitle" >	Restricted physical integrity <img src="img/coverage.svg" class="img"></span><br/><span class="dimDef">social institutions that limit women’s and girls’ control over their bodies, that increase women’s vulnerability, and that normalise attitudes toward gender-based violence. </span></div>
+          <div class="introChart">
+            <div id="title_Coverage" class="indicTitle">
+            </div>
+            <div id="chart_Coverage" class="indicChart">
+            </div>
+          </div>
+          <div id="collapseCoverage" class="panel-collapse collapse">
+            <div class="indicatorPres">
+              <div id="title_3_1_1" class="indicTitle">
+              </div>
+              <div id="chart_3_1_1" class="indicChart">
+              </div>
+            </div>
+            <div class="indicatorPres">
+              <div id="title_3_1_2" class="indicTitle">
+              </div>
+              <div id="chart_3_1_2" class="indicChart">
+              </div>
+            </div>
+            <div class="indicatorPres">
+              <div id="title_3_1_3" class="indicTitle">
+              </div>
+              <div id="chart_3_1_3" class="indicChart">
+              </div>
+            </div>
+            <div class="indicatorPres">
+              <div id="title_3_2_1" class="indicTitle">
+              </div>
+              <div id="chart_3_2_1" class="indicChart">
+              </div>
+            </div>
+          </div>
+
+          <div class="sticky_sentinel sticky_sentinel--top"></div>
+          <div class="sticky_sentinel sticky_sentinel--bottom"></div>
+        </div>
+        <!------------------->
+        <!-- Inclusiveness -->
+        <!------------------->
+        <div data-lorem="p">
+          <div class="text-toogle" aria-expanded="false" data-toggle="collapse"  href="#collapseInclusiveness"><span class="collapseSymbol text-collapsed">+</span><span class="collapseSymbol text-expanded">-</span><span class="dimTitle" id="InclusivenessTitle" >Restricted access to productive and financial resources <img src="img/inclusiveness.svg" class="img"></span><br/><span class="dimDef">women’s restricted access to and control over critical productive and economic resources and assets. </span></div>
+          <div class="introChart">
+            <div id="title_Inclusiveness" class="indicTitle">
+            </div>
+            <div id="chart_Inclusiveness" class="indicChart">
+            </div>
+          </div>
+          <div id="collapseInclusiveness" class="panel-collapse collapse">
+            <div class="indicatorPres">
+              <div id="title_4_1_1" class="indicTitle">
+              </div>
+              <div id="chart_4_1_1" class="indicChart">
+              </div>
+            </div>
+            <div class="indicatorPres">
+              <div id="title_4_1_2" class="indicTitle">
+              </div>
+              <div id="chart_4_1_2" class="indicChart">
+              </div>
+            </div>
+            <div class="indicatorPres">
+              <div id="title_4_1_3" class="indicTitle">
+              </div>
+              <div id="chart_4_1_3" class="indicChart">
+              </div>
+            </div>
+            <div class="indicatorPres">
+              <div id="title_4_1_4" class="indicTitle">
+              </div>
+              <div id="chart_4_1_4" class="indicChart">
+              </div>
+            </div>
+          </div>
+
+          <div class="sticky_sentinel sticky_sentinel--top"></div>
+          <div class="sticky_sentinel sticky_sentinel--bottom"></div>
+        </div>
+      </div>
+      <!--*******************************************    
+        ************ Responses *********************
+        *********************************************
+      -->
+      <div id="Responses">
+        <!------------------->
+        <!-- Flexibilty & Guidance -->
+        <!------------------->
+        <div data-lorem="p">
+          <div class="text-toogle" aria-expanded="false" data-toggle="collapse" href="#collapseFlexiquidance"><span class="collapseSymbol text-collapsed">+</span><span
+              class="collapseSymbol text-expanded">-</span><span class="dimTitle" id="FlexiguidanceTitle">Restricted civil liberties <img src="img/flexiguidance.svg" class="img"></span><br/><span class="dimDef">discriminatory laws and practices that restrict women’s access to public space, their political voice and their participation in all aspects of public life.</span></div>
+          <div class="introChart">
+            <div id="title_Flexiguidance" class="indicTitle">
+            </div>
+            <div id="chart_Flexiguidance" class="indicChart">
+            </div>
+          </div>
+          <div id="collapseFlexiquidance" class="panel-collapse collapse">
+            <div class="indicatorPres">
+              <div id="title_7_1_1" class="indicTitle">
+              </div>
+              <div id="chart_7_1_1" class="indicChart">
+              </div>
+            </div>
+            <div class="indicatorPres">
+              <div id="title_7_1_2" class="indicTitle">
+              </div>
+              <div id="chart_7_1_2" class="indicChart">
+              </div>
+            </div>
+            <div class="indicatorPres">
+              <div id="title_7_2_1" class="indicTitle">
+              </div>
+              <div id="chart_7_2_1" class="indicChart">
+              </div>
+            </div>
+            <div class="indicatorPres">
+              <div id="title_7_2_2" class="indicTitle">
+              </div>
+              <div id="chart_7_2_2" class="indicChart">
+              </div>
+            </div>
+          </div>
+          <div class="sticky_sentinel sticky_sentinel--top"></div>
+          <div class="sticky_sentinel sticky_sentinel--bottom"></div>
+        </div>
+
+          <div class="sticky_sentinel sticky_sentinel--top"></div>
+          <div class="sticky_sentinel sticky_sentinel--bottom"></div>
+        </div>
+      </div>
+    </div>
+    <div id="dimensionView" class="tabcontent">
+      <div id="dimTab">
+        <button class="btn" id="Urgency_Desc"><img src="img/urgency.svg" class="img"> Urgency</button>
+        <button class="btn" id="Participation_Desc"><img src="img/coverage.svg" class="img"> Coverage</button>
+        <button class="btn" id="Inclusiveness_Desc" ><img src="img/inclusiveness.svg" class="img"> Inclusiveness</button>
+        <button class="btn" id="Flexiguidance_Desc"><img src="img/flexiguidance.svg" class="img"> Flexibility & guidance</i></button>
+        <button class="btn" id="Alignment_Desc"><img src="img/alignment.svg" class="img"> Alignment</button>
+        <button class="btn" id="Quality_Desc"><img src="img/impact.svg" class="img"> Perceived Impact</button>
+        <button class="btn" id="Financing_Desc"><img src="img/financing.svg" class="img"> Financing</button>
+      </div>
+    <Br/>
+      <div id="titleDesc">Urgency</div>
+      <div id="explainDesc">New technologies, globalisation and population ageing are influencing the quantity and quality of jobs that are
+      available and the skills workers need to do them yet many adults lack strong basic skills to help them access these new
+      opportunities.. The urgency dimension assesses how pressing the need for up- and reskilling is in different countries.</div>
+      <div id="vizDesc"></div>
+    </div>
+    <div id="dashboardView" class="tabcontent">
+      <div id="title"></div>
+      <div id="viz"></div>
+    </div>
+  </body>
+  
+  <script src="js/openTabs.js"></script>
+  <script src="js/pearlchart.js"></script>
+  <script src="js/sortData.js"></script>
+  <script src="js/colorOpacity.js"></script>
+  <script src="js/dimensionchart.js">
+  </script><script src="js/dimDesc.js"></script>
+  <script src="js/init.js"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-51983915-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</html>
